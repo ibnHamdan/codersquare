@@ -1,0 +1,27 @@
+
+
+
+name: Azure vm deployer
+
+on :
+  push:
+    branches : [ deploy-production ]
+
+  workflow_dispatch:
+
+
+jobs: 
+  deploy:
+    runs-on: selef-hosted
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Depoly and restart web server
+        run: |
+          cd server
+          npm install
+          PORT-3000 JWT_SECRET=12345 PASSWORD_SALT=codersquare ENV=production npm run start:prod
+      
+  
