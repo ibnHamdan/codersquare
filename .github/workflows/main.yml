@@ -22,6 +22,6 @@ jobs:
         run: |
           cd server
           npm install
-          PORT=3000 JWT_SECRET=12345 PASSWORD_SALT=codersquare ENV=production npm run start:prod
+          PORT=80 JWT_SECRET=12345 PASSWORD_SALT=codersquare ENV=production npm run start:prod
 
 
