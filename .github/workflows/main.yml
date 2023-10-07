@@ -19,9 +19,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Depoly and restart web server
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          PASSWORD_SALT: ${{ secrets.PASSWORD_SALT }}
         run: |
           cd server
           npm install
-          PORT=80 JWT_SECRET=12345 PASSWORD_SALT=codersquare ENV=production npm run start:prod
+          PORT=80  ENV=production npm run start:prod
 
 
