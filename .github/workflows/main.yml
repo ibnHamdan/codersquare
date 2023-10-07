@@ -5,12 +5,12 @@ name: Azure vm deployer
 
 on :
   push:
-    branches : [ deploy-production ]
+    branches : [ deploy-prod ]
 
   workflow_dispatch:
 
 
-jobs: 
+jobs:
   deploy:
     runs-on: selef-hosted
 
@@ -23,5 +23,5 @@ jobs:
           cd server
           npm install
           PORT-3000 JWT_SECRET=12345 PASSWORD_SALT=codersquare ENV=production npm run start:prod
-      
-  
+
+
