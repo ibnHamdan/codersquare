@@ -1,3 +1,5 @@
+import https from 'https';
+import fs from 'fs';
 import express from 'express';
 
 import asyncHandler from 'express-async-handler';
@@ -25,7 +27,7 @@ const app = express();
   app.use(loggerMiddleware);
 
   //public endpoints
-  app.get('/healthz', (req, res) => res.send({ status: '✌ 🏻' }));
+  app.get('/healthz', (_, res) => res.send({ status: '✌ 🏻' }));
   app.post('/v1/signup', asyncHandler(signUpHandler));
   app.post('/v1/signin', asyncHandler(signInHandler));
 
@@ -37,5 +39,21 @@ const app = express();
 
   app.use(errHandler);
 
-  app.listen(process.env.PORT || 3000);
+  const port = process.env.PORT;
+  const env = process.env.ENV;
+
+  const listener = () =>
+    console.log(`Listening on port ${port} on ${env} envirnoment`);
+
+  if (env === 'production') {
+    const key = fs.readFileSync(
+      '/home/ibnHamdan/certs/motkhss.com/privkey.pem'
+    );
+    const cert = fs.readFileSync(
+      '/home/ibnHamdan/certs/motkhss.com/cert.pem'
+    );
+    https.createServer({ key, cert }, app).listen(port, listener);
+  } else {
+    app.listen(port, listener);
+  }
 })();
