@@ -25,6 +25,7 @@ const app = express();
   app.use(loggerMiddleware);
 
   //public endpoints
+  app.get('/healthz', (req, res) => res.send({ status: '✌🏻' }));
   app.post('/v1/signup', asyncHandler(signUpHandler));
   app.post('/v1/signin', asyncHandler(signInHandler));
 
@@ -36,5 +37,5 @@ const app = express();
 
   app.use(errHandler);
 
-  app.listen(3000);
+  app.listen(process.env.PORT || 3000);
 })();
