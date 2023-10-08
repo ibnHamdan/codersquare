@@ -47,23 +47,20 @@ const app = express();
     console.log(`Listening on port ${port} on ${env} envirnoment`);
 
   if (env === 'production') {
-    // const key = fs.readFileSync(
-    //   '/home/ibnHamdan/certs/privkey1.pem',
-    //   'utf-8'
-    // );
-    const cert = fs.readFileSync(
-      path.join(__dirname, '../../../certs') + '/cert.pem',
-      'utf-8'
-    );
     const key = fs.readFileSync(
-      path.join(__dirname, '../../../certs/') + 'privkey.pem',
+      '/home/ibnHamdan/certs/privkey1.pem',
       'utf-8'
     );
 
-    // const cert = fs.readFileSync(
-    //   '/home/ibnHamdan/certs/cert1.pem',
+    // const key = fs.readFileSync(
+    //   path.join(__dirname, '../../../certs/') + 'privkey.pem',
     //   'utf-8'
     // );
+
+    const cert = fs.readFileSync(
+      '/home/ibnHamdan/certs/cert1.pem',
+      'utf-8'
+    );
 
     https.createServer({ key, cert }, app).listen(port, listener);
   } else {
