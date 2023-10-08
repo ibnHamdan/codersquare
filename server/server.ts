@@ -47,10 +47,12 @@ const app = express();
 
   if (env === 'production') {
     const key = fs.readFileSync(
-      '/home/ibnHamdan/certs/motkhss.com/privkey1.pem'
+      '/home/ibnHamdan/certs/motkhss.com/privkey1.pem',
+      'utf-8'
     );
     const cert = fs.readFileSync(
-      '/home/ibnHamdan/certs/motkhss.com/cert1.pem'
+      '/home/ibnHamdan/certs/motkhss.com/cert1.pem',
+      'utf-8'
     );
     https.createServer({ key, cert }, app).listen(port, listener);
   } else {
