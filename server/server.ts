@@ -48,7 +48,7 @@ const app = express();
 
   if (env === 'production') {
     const key = fs.readFileSync(
-      '/home/ibnHamdan/certs/privkey1.pem',
+      '/home/ibnHamdan/certs/privkey.pem',
       'utf-8'
     );
 
