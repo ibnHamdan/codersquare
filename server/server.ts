@@ -52,7 +52,7 @@ const app = express();
     //   'utf-8'
     // );
     const cert = fs.readFileSync(
-      path.join(__dirname, '../../../certs') + '/cert1.pem',
+      path.join(__dirname, '../../../certs') + '/cert.pem',
       'utf-8'
     );
     const key = fs.readFileSync(
