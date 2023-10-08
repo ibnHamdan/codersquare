@@ -1,6 +1,7 @@
 import https from 'https';
 import fs from 'fs';
 import express from 'express';
+import path from 'path';
 
 import asyncHandler from 'express-async-handler';
 
@@ -50,6 +51,10 @@ const app = express();
       '/home/ibnHamdan/certs/privkey1.pem',
       'utf-8'
     );
+    const key = fs.readFileSync(
+      path.join(__dirname, '../../../certs/') + 'privkey.pem',
+      'utf-8'
+    );
 
     const cert = fs.readFileSync(
       '/home/ibnHamdan/certs/cert1.pem',
@@ -61,3 +66,18 @@ const app = express();
     app.listen(port, listener);
   }
 })();
+
+const cert = fs.readFileSync(
+  path.join(__dirname, '../../../certs') + '/cert.pem',
+  'utf-8'
+);
+const key = fs.readFileSync(
+  path.join(__dirname, '../../../certs') + '/privkey.pem',
+  'utf-8'
+);
+
+app.get('/', (req, res) => res.send('hello'));
+
+const server = https.createServer({ key, cert }, app);
+
+server.listen(443, () => console.log('listining ...'));
