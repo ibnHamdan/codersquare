@@ -48,7 +48,7 @@ const app = express();
 
   if (env === 'production') {
     const key = fs.readFileSync(
-      '/home/codersquare/certs/privkey.pem',
+      '/home/codersquare/certs/privkey1.pem',
       'utf-8'
     );
 
