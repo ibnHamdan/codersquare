@@ -48,7 +48,7 @@ const app = express();
 
   if (env === 'production') {
     const key = fs.readFileSync(
-      '/home/codersquare/certs/privkey1.pem',
+      '/home/codersquare-user/certs/privkey.pem',
       'utf-8'
     );
 
@@ -58,7 +58,7 @@ const app = express();
     // );
 
     const cert = fs.readFileSync(
-      '/home/codersquare/certs/cert1.pem',
+      '/home/codersquare-user/certs/cert1.pem',
       'utf-8'
     );
 
