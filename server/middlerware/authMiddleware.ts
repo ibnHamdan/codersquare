@@ -10,7 +10,7 @@ export const authMiddleware: ExpressHandler<any, any> = async (
   const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
-    res.sendStatus(401);
+    return res.sendStatus(401);
   }
   try {
     if (!token) {
