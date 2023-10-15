@@ -1,7 +1,6 @@
 import https from 'https';
 import fs from 'fs';
 import express from 'express';
-import path from 'path';
 
 import asyncHandler from 'express-async-handler';
 
