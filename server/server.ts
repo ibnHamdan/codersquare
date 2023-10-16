@@ -47,7 +47,7 @@ const app = express();
 
   if (env === 'production') {
     const key = fs.readFileSync(
-      '/etc/letsencrypt/live/motkhss.com/privkey.pem',
+      '/home/codersquare-user/certs/privkey1.pem',
       'utf-8'
     );
 
@@ -57,7 +57,7 @@ const app = express();
     // );
 
     const cert = fs.readFileSync(
-      '/etc/letsencrypt/live/motkhss.com/cert.pem',
+      '/home/codersquare-user/certs/cert1.pem',
       'utf-8'
     );
 
